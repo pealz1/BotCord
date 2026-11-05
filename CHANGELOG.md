@@ -8,6 +8,7 @@ All notable changes to BotCord (called BotDeck up to 1.0.0) are listed here. Ver
 
 - The local server now runs on Express 5. Wildcard routes use the new `/{*path}` syntax, and query strings are still parsed the Express 4 way, so the Discord client sees the same responses.
 - Electron 45 (Chromium 156, Node.js 24.22).
+- `ini` 7 for importing old `config.ini` settings. `undici` is no longer shipped with the app: only the maintenance scripts used it, and they now use Node's built-in `fetch`.
 - Development tooling: ESLint 10, pnpm 12 (builds Vencord), Vite 8 (builds the Settings window), jsdom 31 and js-beautify 2. The unused `eslint-plugin-import` and legacy `.eslintrc.json` are gone.
 
 ### Fixed

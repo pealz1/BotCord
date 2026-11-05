@@ -16,3 +16,8 @@ updates:
       development:
         dependency-type: "development"
         update-types: ["minor", "patch"]
+    ignore:
+      # selfsigned 3+ only generates certificates asynchronously, but the local server must know its port before
+      # Electron is ready so host-rules can point discord.com at it. Stay on v2 until that startup order changes.
+      - dependency-name: "selfsigned"
+        update-types: ["version-update:semver-major"]
