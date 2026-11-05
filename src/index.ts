@@ -1,5 +1,8 @@
 /* Copyright Elysia © 2025. All rights reserved */
 
+// Must stay the first import: it moves BotDeck-era data into place before anything reads userData.
+import "./AppCore/LegacyUserData";
+
 import { app } from "electron";
 import { errorHandler, eventLogger, hooks, scope, transports } from "electron-log";
 import { inspect } from "util";

@@ -15,10 +15,11 @@ interface Body {
 app.post("/", (req, res) => {
     const callback = (
         reqCallback: Request<
-            Params, // Params
-            unknown, // ResBody
-            Body, // ReqBody
-            unknown // ReqQuery
+            // Params, ResBody, ReqBody, ReqQuery
+            Params,
+            unknown,
+            Body,
+            unknown
         >,
         resCallback: Response,
     ) => {

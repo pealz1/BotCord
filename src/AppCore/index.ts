@@ -374,11 +374,11 @@ export class DiscordBotClient extends EventEmitter {
         const contents = this.discordWebContents;
         contents.on("did-fail-load", (_event, code, _description, _url, isMainFrame) => {
             if (isMainFrame && code !== -3 && this.startupWindow) {
-                this.startupWindow.fail("Could not load DBC. Check your connection and try again.");
+                this.startupWindow.fail("Could not load BotCord. Check your connection and try again.");
             }
         });
         contents.on("render-process-gone", () => {
-            if (this.startupWindow) this.startupWindow.fail("DBC stopped while starting. Please try again.");
+            if (this.startupWindow) this.startupWindow.fail("BotCord stopped while starting. Please try again.");
         });
         await this.sessionPatch();
 

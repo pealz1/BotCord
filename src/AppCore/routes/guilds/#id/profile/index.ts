@@ -34,8 +34,8 @@ function convertGuildObjectToGuildProfileObject (guild: APIGuild & { code?: numb
             game_activity: {},
             tag: null,
             badge: 0,
-            badge_color_primary: "#ff0000", // ?
-            badge_color_secondary: "#800000", // ?
+            badge_color_primary: "#ff0000",
+            badge_color_secondary: "#800000",
             badge_hash: null,
             traits: [],
             features: guild.features,

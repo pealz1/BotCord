@@ -8,7 +8,8 @@ import Constants from "src/AppCore/Constants";
 const app = Router({ mergeParams: true });
 
 const CACHE_MAX_SIZE = 200;
-const CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes
+// 10 minutes
+const CACHE_TTL_MS = 10 * 60 * 1000;
 
 interface ThreadCacheEntry {
     timestamps: Set<number>;
@@ -57,11 +58,9 @@ app.all(
         res,
     ) => {
         const channelId = req.params.id;
-        let { sort_by, sort_order } = req.query;
-        const { archived, tag_setting, name, tag, limit, offset } = req.query;
-        // Force set
-        sort_by = "archive_time";
-        sort_order = "desc";
+        // Results are always newest-archived first; tag_setting, sort_by and sort_order are ignored.
+        const { archived, name, tag, limit, offset } = req.query;
+        // Discord API limitation: bots cannot search threads by name or tag.
         if (tag || name) {
             return res.send({
                 threads: [],
@@ -69,7 +68,7 @@ app.all(
                 has_more: false,
                 total_results: 0,
                 first_messages: [],
-            }); // Discord API limitation
+            });
         }
         let threads: APIPublicThreadChannel[] = [];
         let members: APIThreadMember[] = [];
@@ -96,42 +95,6 @@ app.all(
             // first_messages = publicThread.first_messages || [];
             // public_has_more = publicThread.has_more || false;
         }
-        /*
-	function sorting(a = 0, b = 0) {
-		if (sort_order === 'asc') {
-			return a > b ? 1 : a < b ? -1 : 0; // Ascending order
-		} else {
-			return a < b ? 1 : a > b ? -1 : 0; // Descending order
-		}
-	}
-	switch (sort_by) {
-		case 'archive_time': {
-			threads = threads.sort((a, b) =>
-				sorting(
-					new Date(a.thread_metadata.archive_timestamp)?.getTime(),
-					new Date(a.thread_metadata.archive_timestamp)?.getTime(),
-				),
-			);
-			break;
-		}
-		case 'creation_time': {
-			threads = threads.sort((a, b) =>
-				sorting(
-					new Date(a.thread_metadata.create_timestamp)?.getTime(),
-					new Date(a.thread_metadata.create_timestamp)?.getTime(),
-				),
-			);
-			break;
-		}
-		case 'last_message_time':
-		default: {
-			threads = threads.sort((a, b) =>
-				sorting(BigInt(a.last_message_id), BigInt(b.last_message_id)),
-			);
-			break;
-		}
-	}
-	*/
         for (let i = 0; i < threads.length; i++) {
             const timestamp = threads[i].thread_metadata?.archive_timestamp ?? 0;
             set.add(new Date(timestamp).getTime());

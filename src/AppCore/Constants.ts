@@ -5,7 +5,7 @@ import path from "path";
 import UserPatch from "src/AppUtils/UserPatch";
 
 const GithubUserName = "pealz1";
-const GithubRepoName = "BotDeck";
+const GithubRepoName = "BotCord";
 
 export default class Constants extends null {
     static BlacklistRoutes = [
@@ -29,10 +29,12 @@ export default class Constants extends null {
         "/paypal",
         "/validate-billing-address",
         "/custom-call-sounds",
-        "auth/conditional/start", // Disable WebAuthn
+        // Disable WebAuthn
+        "auth/conditional/start",
     ];
     static LatestStorageUpdate = 1735000000000;
-    static AppName = "BotDeck";
+    static AppName = "BotCord";
+    // Kept from the BotDeck name (and in package.json build.appId) so existing installs update in place.
     static AppID = "io.github.pealz1.botdeck";
     static iconPath = path.join(app.getAppPath(), "assets", "icon.png");
     static icon16 = nativeImage.createFromPath(Constants.iconPath).resize({ width: 16 });
@@ -42,7 +44,8 @@ export default class Constants extends null {
     static UserAgentDiscordBot = `DiscordBot (https://github.com/${GithubUserName}/${GithubRepoName}, v${app.getVersion()})`;
     static VencordExtensionPath = path.join(app.getAppPath(), "VencordExtension");
     static DiscordHTMLPath = path.join(app.getAppPath(), "assets", "snapshot", "index.html");
-    static EditorHTMLFolderPath = path.join(app.getAppPath(), "assets", "editor"); // Beta feature
+    // Beta feature
+    static EditorHTMLFolderPath = path.join(app.getAppPath(), "assets", "editor");
     static DiscordGuildExperimentsPath = path.join(app.getAppPath(), "assets", "snapshot", "guild_experiments.json");
     static DiscordUserExperimentsPath = path.join(app.getAppPath(), "assets", "snapshot", "user_experiments.json");
     static DiscordApexExperimentsPath = path.join(app.getAppPath(), "assets", "snapshot", "apex_experiments.json");

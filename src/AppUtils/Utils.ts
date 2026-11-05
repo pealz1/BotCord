@@ -113,7 +113,8 @@ export default class Util {
         if (!token) return null;
         token = token.replace(/^(Bot|Bearer)\s*/i, "");
         const parts = token.split(".");
-        if (parts.length < 2) return null; // Token must have at least 2 parts (id.secret)
+        // Token must have at least 2 parts (id.secret)
+        if (parts.length < 2) return null;
         try {
             const decoded = Buffer.from(parts[0], "base64").toString();
             // Discord user/bot IDs are numeric (snowflakes)
@@ -291,11 +292,13 @@ export default class Util {
                     name: "subjectAltName",
                     altNames: [
                         {
-                            type: 2, // DNS
+                            // DNS
+                            type: 2,
                             value: "localhost",
                         },
                         {
-                            type: 7, // IP
+                            // IP
+                            type: 7,
                             ip: "127.0.0.1",
                         },
                     ],

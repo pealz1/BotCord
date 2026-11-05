@@ -5,7 +5,7 @@ import { Router } from "express";
 const app = Router({ mergeParams: true });
 
 app.get("/", (req, res) => {
-    return res.redirect("https://github.com/pealz1/BotDeck/releases");
+    return res.redirect("https://github.com/pealz1/BotCord/releases");
 });
 
 export default app;

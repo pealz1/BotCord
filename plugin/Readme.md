@@ -1,6 +1,6 @@
 ## BotClient plugin
 
-The Vencord plugin that lets the Discord web client log in with a **bot account**. It is part of [BotDeck](https://github.com/pealz1/BotDeck) and is based on [VencordDBCPlugin](https://github.com/aiko-chan-ai/VencordDBCPlugin) by aiko-chan-ai, whose history is kept in this folder.
+The Vencord plugin that lets the Discord web client log in with a **bot account**. It is part of [BotCord](https://github.com/pealz1/BotCord) and is based on [VencordDBCPlugin](https://github.com/aiko-chan-ai/VencordDBCPlugin) by aiko-chan-ai, whose history is kept in this folder.
 
 `npm run vencord` copies this folder into `Vencord/src/userplugins/botClient` and builds Vencord with it. Always edit the files here, not the copy.
 

@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
             Constants.UserDefaultPatch,
             null,
             null,
-            "BotDeck system messages. Based on DiscordBotClient by aiko-chan-ai: https://github.com/aiko-chan-ai/DiscordBotClient",
+            "BotCord system messages. Based on DiscordBotClient by aiko-chan-ai: https://github.com/aiko-chan-ai/DiscordBotClient",
         ),
     );
 });

@@ -1,8 +1,8 @@
 {
-  "name": "botdeck",
-  "productName": "BotDeck",
-  "version": "1.0.0",
-  "description": "BotDeck: a desktop Discord bot client. Log in to Discord with a bot token and use your bot like a normal account.",
+  "name": "botcord",
+  "productName": "BotCord",
+  "version": "1.1.0",
+  "description": "BotCord: a desktop Discord bot client. Log in to Discord with a bot token and use your bot like a normal account.",
   "author": {
     "name": "pealz1",
     "url": "https://github.com/pealz1"
@@ -13,13 +13,13 @@
       "url": "https://github.com/aiko-chan-ai"
     }
   ],
-  "homepage": "https://github.com/pealz1/BotDeck#readme",
+  "homepage": "https://github.com/pealz1/BotCord#readme",
   "bugs": {
-    "url": "https://github.com/pealz1/BotDeck/issues"
+    "url": "https://github.com/pealz1/BotCord/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pealz1/BotDeck.git"
+    "url": "git+https://github.com/pealz1/BotCord.git"
   },
   "license": "GPL-3.0",
   "main": "build/index.js",
@@ -56,7 +56,7 @@
     "electron",
     "vencord",
     "desktop-app",
-    "botdeck"
+    "botcord"
   ],
   "devDependencies": {
     "@eslint/js": "^9.39.2",
@@ -137,9 +137,9 @@
       "!plugin"
     ],
     "appId": "io.github.pealz1.botdeck",
-    "productName": "BotDeck",
+    "productName": "BotCord",
     "artifactName": "${productName}-${os}-${arch}.${ext}",
-    "copyright": "Copyright © 2022-2026 aiko-chan-ai and contributors; BotDeck © 2026 pealz1",
+    "copyright": "Copyright © 2022-2026 aiko-chan-ai and contributors; BotCord © 2026 pealz1",
     "mac": {
       "category": "public.app-category.social-networking",
       "target": [
@@ -169,11 +169,11 @@
       ],
       "desktop": {
         "entry": {
-          "Name": "BotDeck",
+          "Name": "BotCord",
           "GenericName": "Internet Messenger",
           "Type": "Application",
           "Categories": "Network;InstantMessaging;Chat;",
-          "Keywords": "discord;bot;botdeck;vencord;electron;chat;"
+          "Keywords": "discord;bot;botcord;vencord;electron;chat;"
         }
       },
       "category": "Network",
@@ -199,7 +199,7 @@
       {
         "provider": "github",
         "owner": "pealz1",
-        "repo": "BotDeck"
+        "repo": "BotCord"
       }
     ],
     "asar": false

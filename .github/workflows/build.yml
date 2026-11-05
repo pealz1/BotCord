@@ -45,26 +45,24 @@ jobs:
       - name: Install pinned dependencies
         run: npm run requirement
       - name: Audit application dependencies
-        if: github.event_name == 'push' && runner.os == 'Windows'
+        if: runner.os == 'Windows'
         continue-on-error: true
         run: npm audit --omit=dev --audit-level=high
       - name: Audit editor dependencies
-        if: github.event_name == 'push' && runner.os == 'Windows'
+        if: runner.os == 'Windows'
         continue-on-error: true
         working-directory: discohook
         run: npm audit --omit=dev --audit-level=high
       - name: Build Vencord and message editor
         run: npm run build:deps
       - name: Lint
-        if: github.event_name == 'push'
         run: npm run lint
       - name: Check TypeScript
-        if: github.event_name == 'push'
         run: npm run typecheck
       - name: Build application
         run: npm run build:ts
       - name: Test Electron integration
-        if: github.event_name == 'push' && runner.os == 'Windows'
+        if: runner.os == 'Windows'
         run: npm test
       - name: Package without publishing
         run: npm run build:bin
@@ -80,7 +78,7 @@ jobs:
       - name: Upload build artifacts
         uses: actions/upload-artifact@v7
         with:
-          name: botdeck-${{ runner.os }}
+          name: botcord-${{ runner.os }}
           retention-days: 7
           if-no-files-found: error
           path: |
@@ -100,7 +98,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v8
         with:
-          pattern: botdeck-*
+          pattern: botcord-*
           merge-multiple: true
           path: release
       - name: Create draft release after every platform succeeds
