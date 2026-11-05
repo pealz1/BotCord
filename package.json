@@ -85,7 +85,7 @@
     "eslint-plugin-simple-header": "^1.2.2",
     "eslint-plugin-simple-import-sort": "12.1.1",
     "eslint-plugin-unused-imports": "^4.3.0",
-    "js-beautify": "^1.15.4",
+    "js-beautify": "^2.0.3",
     "jsdom": "^29.1.1",
     "pnpm": "^11.17.0",
     "prettier": "^3.9.10",
