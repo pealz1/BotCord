@@ -11,7 +11,7 @@ export const LegacyAppName = "BotDeck";
  * Moves the legacy data folder into place when `userData` has never been used.
  * Electron creates `userData` (empty) before app code runs, so "empty" means "first launch".
  */
-export function adoptLegacyUserData(legacyDir: string, userDataDir: string): boolean {
+export function adoptLegacyUserData (legacyDir: string, userDataDir: string): boolean {
     if (!fs.existsSync(legacyDir)) return false;
     if (fs.existsSync(userDataDir) && fs.readdirSync(userDataDir).length > 0) return false;
     try {
