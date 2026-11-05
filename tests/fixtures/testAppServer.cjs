@@ -37,6 +37,19 @@ const root = path.resolve(__dirname, '../..');
         const response = await electronNet.fetch('https://discord.com/app');
         assert.equal(response.status, 200);
         assert.equal(await response.text(), fs.readFileSync(path.join(root, 'assets/snapshot/index.html'), 'utf8'));
+        // Express 5 wildcard routes ("/{*path}") must match both the mount root and anything below it.
+        for (const url of ['/cdn-cgi', '/cdn-cgi/challenge-platform/h/b']) {
+            assert.equal((await electronNet.fetch(`https://discord.com${url}`)).status, 204, url);
+        }
+        for (const url of ['/api/v9/users/@me/mentions?limit=25', '/api/v9/users/@me/mentions/extra']) {
+            assert.deepEqual(await (await electronNet.fetch(`https://discord.com${url}`)).json(), [], url);
+        }
+        const quest = await electronNet.fetch('https://discord.com/api/v9/quests/1/claim-reward', { method: 'POST' });
+        assert.equal(quest.status, 403);
+        assert.equal((await quest.json()).code, 20001);
+        // Electron's fetch cancels instead of returning the 3xx in manual mode, which still proves the redirect.
+        await assert.rejects(electronNet.fetch('https://discord.com/developers/applications', { redirect: 'manual' }), /Redirect was cancelled/);
+        assert.equal((await electronNet.fetch('https://discord.com/developers/applications')).status, 200);
         clearTimeout(watchdog);
         console.log(`PASS: ${useSystemProxy ? "system proxy enabled" : "direct connections"} and host rule serve the bundled app page`);
         app.exit(0);

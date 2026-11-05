@@ -5,7 +5,7 @@ import { Router } from "express";
 
 const app = Router({ mergeParams: true });
 
-app.get("/*", (req, res) => {
+app.get("/{*path}", (req, res) => {
     net.fetch("https://canary.discord.com/popout")
         .then(r => r.text())
         .then(t => res.send(t))

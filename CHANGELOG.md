@@ -2,6 +2,12 @@
 
 All notable changes to BotCord (called BotDeck up to 1.0.0) are listed here. Versions follow [Semantic Versioning](https://semver.org).
 
+## [Unreleased]
+
+### Changed
+
+- The local server now runs on Express 5. Wildcard routes use the new `/{*path}` syntax, and query strings are still parsed the Express 4 way, so the Discord client sees the same responses.
+
 ## [1.1.0] - 2026-11-05
 
 BotDeck is now **BotCord**, with a new logo. It is the same app: the app ID and update channel are unchanged, so BotDeck 1.0.0 updates itself on Windows and Linux.

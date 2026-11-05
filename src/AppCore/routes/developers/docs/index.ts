@@ -4,7 +4,7 @@ import { Router } from "express";
 
 const app = Router({ mergeParams: true });
 
-app.get("*", (req, res) => {
+app.get("/{*path}", (req, res) => {
     res.redirect("https://discord.com/developers/docs/intro");
 });
 

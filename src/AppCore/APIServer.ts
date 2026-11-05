@@ -53,8 +53,11 @@ const server = https.createServer(
 
 const ignoreHeaders = ["cookie", "sec-", "referer", "origin", "authorization", "host"];
 
+// Keep Express 4 query parsing (nested objects and arrays), which Express 5 no longer does by default.
+app.set("query parser", "extended");
+
 // Handle headers
-app.all("*", function (req, res, next) {
+app.use(function (req, res, next) {
     req.originalHeaders = req.headers;
     const headers: typeof req.headers = {};
     Object.keys(req.headers).forEach(key => {
@@ -76,7 +79,7 @@ app.all("*", function (req, res, next) {
 
 registerRoutesSync(app, path.resolve(__dirname, "routes"), ["/api/v10", "/api/v9", "/api"]);
 
-app.all("/developers/*", (req, res) => {
+app.all("/developers/*path", (req, res) => {
     return res.redirect("/app");
 });
 
