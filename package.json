@@ -1,7 +1,7 @@
 {
   "name": "botcord",
   "productName": "BotCord",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "BotCord: a desktop Discord bot client. Log in to Discord with a bot token and use your bot like a normal account.",
   "author": {
     "name": "pealz1",
