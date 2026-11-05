@@ -32,7 +32,7 @@ export const settingsDefinitions = [
     {
         key: "doh_provider",
         displayName: "DNS over HTTPS",
-        description: "Prefer encrypted DNS with system DNS fallback. Applies after restarting DBC.",
+        description: "Prefer encrypted DNS with system DNS fallback. Applies after restarting BotCord.",
         type: "select",
         defaultValue: "off",
         options: [
@@ -46,7 +46,7 @@ export const settingsDefinitions = [
     {
         key: "use_system_proxy",
         displayName: "Use system proxy",
-        description: "Follow OS proxy settings for network requests. The proxy must bypass discord.com so DBC can reach its local page. Applies after restarting DBC.",
+        description: "Follow OS proxy settings for network requests. The proxy must bypass discord.com so BotCord can reach its local page. Applies after restarting BotCord.",
         type: "boolean",
         defaultValue: false,
     },
@@ -70,14 +70,14 @@ export const settingsDefinitions = [
     {
         key: "generate_fake_profile",
         displayName: "Generate local profiles",
-        description: "Add simulated profile details in DBC. Actual profiles are unchanged.",
+        description: "Add simulated profile details in BotCord. Actual profiles are unchanged.",
         type: "boolean",
         defaultValue: true,
     },
     {
         key: "auto_check_updates",
         displayName: "Check for updates automatically",
-        description: "Check for new DBC versions at startup. Manual checks remain available.",
+        description: "Check for new BotCord versions at startup. Manual checks remain available.",
         type: "boolean",
         defaultValue: true,
     },

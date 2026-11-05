@@ -134,7 +134,7 @@ export function setupIPCEvents (mainApp: DiscordBotClient) {
                             detail:
                                 "Discord Developer Portal > your application > Bot > Privileged Gateway Intents > Message Content Intent > Save Changes.\n\n" +
                                 "Without it, server messages appear empty. Bots in 100 or more servers need Discord's approval for this intent.\n\n" +
-                                'To log in anyway, turn on "Skip message content intent check" in DBC Settings (tray menu).',
+                                'To log in anyway, turn on "Skip message content intent check" in BotCord Settings (tray menu).',
                             buttons: ["Open Developer Portal", "Close"],
                             defaultId: 0,
                             cancelId: 1,

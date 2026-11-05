@@ -19,7 +19,7 @@ export class StartupWindow {
             frame: false,
             show: false,
             backgroundColor: "#282b30",
-            title: "BotDeck",
+            title: "BotCord",
             autoHideMenuBar: true,
             webPreferences: {
                 preload: path.join(__dirname, "..", "Preloads", "StartupPreload.js"),
@@ -48,7 +48,7 @@ export class StartupWindow {
             if (this.window.isDestroyed()) return;
             dialog.showErrorBox(
                 "Startup failed",
-                "The startup screen could not be loaded. Please reinstall BotDeck.",
+                "The startup screen could not be loaded. Please reinstall BotCord.",
             );
             quit();
         });
@@ -59,10 +59,10 @@ export class StartupWindow {
     }
 
     loading () {
-        this.update({ phase: "loading", message: "Loading DBC..." });
+        this.update({ phase: "loading", message: "Loading BotCord..." });
         clearTimeout(this.timer);
         this.timer = setTimeout(
-            () => this.fail("DBC is taking too long to start. Check your connection and try again."),
+            () => this.fail("BotCord is taking too long to start. Check your connection and try again."),
             45000,
         );
     }

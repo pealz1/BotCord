@@ -20,7 +20,8 @@ export async function GetSystemMessage () {
         {
             id: "1000000000000000000",
             // https://docs.discord.food/resources/message#message-type
-            type: 47 as MessageType, // CHANGELOG => Disable Message Forwards
+            // CHANGELOG => Disable Message Forwards
+            type: 47 as MessageType,
             channel_id: Constants.ChannelIdDefault,
             author: Constants.UserDefaultPatch,
             attachments: [],

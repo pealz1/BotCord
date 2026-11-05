@@ -35,12 +35,8 @@ export default [
                 },
             ],
             "n/exports-style": ["error", "module.exports"],
-            "no-unused-vars": [
-                "warn",
-                {
-                    args: "none",
-                },
-            ],
+            // The base rule misreads TypeScript enums and types; the typescript-eslint rule below covers it.
+            "no-unused-vars": "off",
             "@typescript-eslint/no-unused-vars": [
                 "warn",
                 {

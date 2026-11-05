@@ -11,7 +11,8 @@ import { validateBotToken } from "src/AppUtils/ValidateBotToken";
 const app = Router({ mergeParams: true });
 
 const EMOJI_CACHE_MAX_SIZE = 100;
-const EMOJI_CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes
+// 5 minutes
+const EMOJI_CACHE_TTL_MS = 5 * 60 * 1000;
 
 interface EmojiCacheEntry {
     timeout: number;
@@ -53,18 +54,6 @@ app.get("/", validateBotToken, (req, res) => {
     })
         .then(r => r.json() as Promise<{ items: APIApplicationEmoji[] }>)
         .then(r => {
-            const emojis = r.items.map(emoji => ({
-                roles: [],
-                require_colons: emoji.require_colons,
-                name: emoji.name,
-                managed: false,
-                id: emoji.id,
-                available: true,
-                animated: emoji.animated,
-                allNamesString: `:${emoji.name}:`,
-                guildId: "0",
-                type: 1,
-            }));
             cacheMap.set(id, {
                 timeout: Date.now() + EMOJI_CACHE_TTL_MS,
                 data: r.items,

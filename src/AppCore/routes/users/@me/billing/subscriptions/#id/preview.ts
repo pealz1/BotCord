@@ -27,7 +27,8 @@ app.all("/", (req, res) => {
         tax_inclusive: true,
         subscription_period_start: new Date().toISOString(),
         subscription_period_end: new Date(
-            Date.now() + 31536000000, // 1 year
+            // 1 year
+            Date.now() + 31536000000,
         ).toISOString(),
     });
 });

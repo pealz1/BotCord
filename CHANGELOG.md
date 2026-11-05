@@ -1,6 +1,26 @@
 # Changelog
 
-All notable changes to BotDeck are listed here. Versions follow [Semantic Versioning](https://semver.org).
+All notable changes to BotCord (called BotDeck up to 1.0.0) are listed here. Versions follow [Semantic Versioning](https://semver.org).
+
+## [1.1.0] - 2026-11-05
+
+BotDeck is now **BotCord**, with a new logo. It is the same app: the app ID and update channel are unchanged, so BotDeck 1.0.0 updates itself on Windows and Linux.
+
+### Changed
+
+- New name and logo. The repository moved to [pealz1/BotCord](https://github.com/pealz1/BotCord); old links redirect.
+- On first launch, BotCord moves BotDeck's settings and saved logins into its own data folder, so you stay logged in. If BotDeck is still running, BotCord starts with fresh settings instead.
+- Startup messages and Settings descriptions say "BotCord" instead of "DBC".
+
+### Security
+
+- Updated `express`, `multer`, `undici` and their dependencies to fix advisories in `proxy-addr` (critical), `body-parser`, `path-to-regexp`, `qs`, `node-forge` and others. `npm audit` reports no vulnerabilities in the app's dependencies.
+- The message editor's pinned Discohook build now uses patched `zod`, `postcss` and build tooling (`scripts/discohook-audit-fix.patch`).
+- Dependabot now proposes npm dependency updates weekly, and GitHub Actions are on their current major versions.
+
+### Fixed
+
+- Removed dead code and fixed every lint warning in `src/`.
 
 ## [1.0.0] - 2026-10-20
 

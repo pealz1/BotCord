@@ -1,12 +1,12 @@
-# Contributing to BotDeck
+# Contributing to BotCord
 
 Thanks for helping. Bug reports, ideas and pull requests are all welcome.
 
 ## Reporting bugs and asking for features
 
-- Search [existing issues](https://github.com/pealz1/BotDeck/issues) first.
-- Use the [bug report](https://github.com/pealz1/BotDeck/issues/new?template=bug-report.yml) or [feature request](https://github.com/pealz1/BotDeck/issues/new?template=feature-request.yml) form.
-- Questions and general discussion go in [Discussions](https://github.com/pealz1/BotDeck/discussions).
+- Search [existing issues](https://github.com/pealz1/BotCord/issues) first.
+- Use the [bug report](https://github.com/pealz1/BotCord/issues/new?template=bug-report.yml) or [feature request](https://github.com/pealz1/BotCord/issues/new?template=feature-request.yml) form.
+- Questions and general discussion go in [Discussions](https://github.com/pealz1/BotCord/discussions).
 - **Never post a bot token**, private messages or user IDs. If a token leaks, reset it in the Developer Portal right away.
 - Security problems go through [private reporting](SECURITY.md), not public issues.
 
@@ -19,16 +19,17 @@ Thanks for helping. Bug reports, ideas and pull requests are all welcome.
 | `src/shared/Settings.ts` | Settings schema shared by the main process and the Settings window. |
 | `plugin/` | The BotClient Vencord plugin that patches the Discord client for bot accounts. It is copied into `Vencord/src/userplugins/botClient` at build time; always edit `plugin/`. |
 | `assets/snapshot` | The Discord web shell and experiment snapshots. |
-| `scripts/` | Dependency checkout, Vencord/Discohook builds and snapshot updates. Pinned revisions live in `scripts/build-dependencies.json`. |
+| `scripts/` | Dependency checkout, Vencord/Discohook builds and snapshot updates. Pinned revisions live in `scripts/build-dependencies.json`; `discohook-audit-fix.patch` updates the editor's lockfile for that revision (regenerate it with `npm audit fix` when you bump the pin). |
 | `tests/` | Electron integration tests (`tests/fixtures`) and plugin unit tests (`tests/plugin`). |
+| `docs/images` | README images and the logo source. `assets/icon.png` is `logo.svg` rendered at 1024 × 1024. |
 
 ## Development setup
 
 You need Node.js 24 and Git.
 
 ```sh
-git clone https://github.com/pealz1/BotDeck.git
-cd BotDeck
+git clone https://github.com/pealz1/BotCord.git
+cd BotCord
 npm run requirement   # npm ci + pinned Vencord and Discohook checkouts
 npm run build:deps    # build Vencord (with plugin/) and the message editor
 npm run build:ts      # build the app

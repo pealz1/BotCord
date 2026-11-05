@@ -1,6 +1,6 @@
 /* Copyright Elysia © 2025 */
 
-import { execFileSync } from "child_process";
+import { execFileSync, spawnSync } from "child_process";
 import { existsSync } from "fs";
 import path from "path";
 
@@ -9,7 +9,7 @@ import versions from "./build-dependencies.json";
 const root = process.cwd();
 const discohookDir = path.join(root, "discohook");
 
-function run (command: string, args: string[], cwd = root) {
+function run(command: string, args: string[], cwd = root) {
     execFileSync(command, args, { cwd, stdio: "inherit" });
 }
 
@@ -22,8 +22,20 @@ if (!existsSync(discohookDir)) {
 
 const current = execFileSync("git", ["rev-parse", "HEAD"], { cwd: discohookDir, encoding: "utf8" }).trim();
 if (current !== versions.discohook) {
-    throw new Error(discohookDir + " is at " + current + "; expected " + versions.discohook + ". Resolve this checkout manually before building.");
+    throw new Error(
+        discohookDir +
+            " is at " +
+            current +
+            "; expected " +
+            versions.discohook +
+            ". Resolve this checkout manually before building.",
+    );
 }
+
+// Lockfile-only security fixes for the pinned revision. Regenerate with `npm audit fix` when bumping the pin.
+const patch = path.join(root, "scripts", "discohook-audit-fix.patch");
+const patched = spawnSync("git", ["apply", "--reverse", "--check", patch], { cwd: discohookDir }).status === 0;
+if (!patched) run("git", ["apply", patch], discohookDir);
 
 const npmCli = process.env.npm_execpath;
 if (!npmCli) throw new Error("Run dependency setup through npm run requirement.");

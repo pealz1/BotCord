@@ -4,3 +4,12 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      production:
+        dependency-type: "production"
+      development:
+        dependency-type: "development"

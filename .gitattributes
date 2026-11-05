@@ -1,2 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Applied with git apply: keep byte-exact line endings.
+*.patch -text

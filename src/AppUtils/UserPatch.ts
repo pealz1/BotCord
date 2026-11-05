@@ -5,8 +5,8 @@ import { APIUser } from "discord-api-types/v10";
 export default {
     "1056491867375673424": {
         id: "1056491867375673424",
-        username: "botdeck",
-        global_name: "BotDeck",
+        username: "botcord",
+        global_name: "BotCord",
         avatar: null,
         avatar_decoration: null,
         discriminator: "0000",

@@ -54,7 +54,7 @@ app.whenReady().then(async () => {
     await evaluate('window.startupAPI.retry(); window.startupAPI.getState()');
     assert.equal(retries, 0, 'Retry ignored outside error state');
     startup.loading();
-    await waitFor(() => evaluate('document.getElementById("status").textContent === "Loading DBC..."'));
+    await waitFor(() => evaluate('document.getElementById("status").textContent === "Loading BotCord..."'));
     assert.equal(await evaluate('document.getElementById("actions").hidden'), true);
     const loadingOutput = path.join(root, 'plans', '261001-startup-window', 'startup-loading-preview.png');
     fs.mkdirSync(path.dirname(loadingOutput), { recursive: true });

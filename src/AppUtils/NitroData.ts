@@ -25,7 +25,8 @@ export interface CountryPrices {
     prices: PriceElement[];
 }
 
-export type CountryCode = string; // ISO 3166-1 alpha-2 country code
+// ISO 3166-1 alpha-2 country code
+export type CountryCode = string;
 
 export interface PriceElement {
     currency: Currency;
