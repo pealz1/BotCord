@@ -22,7 +22,7 @@ app.all("/", async (req, res) => {
     }
 });
 
-app.all("/*", (req, res) => {
+app.all("/{*path}", (req, res) => {
     res.status(404).send();
 });
 

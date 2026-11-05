@@ -82,11 +82,11 @@ export function registerRouteSync (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     router: any,
 ): Router | undefined {
-    // Turn the file path into an Express route: strip the root and extension, map #id to :id and ! to ?.
+    // Turn the file path into an Express route: strip the root and extension, and map #id to :id.
     if (root.endsWith("/") || root.endsWith("\\")) root = root.slice(0, -1);
     let path = file.replace(root, "");
     path = path.split(".").slice(0, -1).join(".");
-    path = path.replaceAll("#", ":").replaceAll("!", "?").replaceAll("\\", "/");
+    path = path.replaceAll("#", ":").replaceAll("\\", "/");
     if (path.endsWith("/index")) path = path.slice(0, -6);
     // The root index file serves "/".
     if (!path.length) path = "/";

@@ -9,7 +9,7 @@ app.get("/", (req, res) => {
     res.send(Constants.UserDefaultPatch);
 });
 
-app.all("/*", (req, res) => {
+app.all("/{*path}", (req, res) => {
     res.status(404).send();
 });
 
