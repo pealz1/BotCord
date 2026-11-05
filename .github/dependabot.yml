@@ -8,8 +8,11 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    # Minor and patch updates arrive grouped; each major update gets its own PR, since those need migration work.
     groups:
       production:
         dependency-type: "production"
+        update-types: ["minor", "patch"]
       development:
         dependency-type: "development"
+        update-types: ["minor", "patch"]
