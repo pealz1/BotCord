@@ -1,6 +1,5 @@
 /* Copyright Elysia © 2025 */
 
-import { fetch } from "undici";
 import path from "path";
 import fs from "fs";
 import { JSDOM } from "jsdom";

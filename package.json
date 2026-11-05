@@ -106,13 +106,12 @@
     "electron-log": "^5.4.4",
     "electron-updater": "^6.8.11",
     "express": "^5.3.0",
-    "ini": "^6.0.0",
+    "ini": "^7.0.0",
     "morgan": "^1.12.1",
     "multer": "^2.4.0",
     "murmurhash": "^2.0.1",
     "probe-image-size": "^7.5.0",
-    "selfsigned": "^2.4.1",
-    "undici": "^7.24.3"
+    "selfsigned": "^2.4.1"
   },
   "build": {
     "files": [
