@@ -12,7 +12,7 @@ Log in to Discord with a bot token and use the bot like a normal account.
 
 </div>
 
-![BotCord's token login screen with the Settings window open](docs/images/screenshot.png)
+![BotCord logged in as a bot named Pip, replying with an embed in a server (demo data)](docs/images/screenshot.png)
 
 BotCord is a desktop Discord client for bot accounts. It runs Discord's real web client, signed in as your bot, so you can read channels, send messages and embeds, manage servers and join voice as the bot without writing code. Useful for moderating through a bot, testing one, or just seeing what it sees.
 
