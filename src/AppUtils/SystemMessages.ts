@@ -46,7 +46,7 @@ export async function GetSystemMessage () {
                 },
                 {
                     type: "rich",
-                    description: `**${Constants.AppName}** is a community-maintained continuation of **DiscordBotClient**, created by **aiko-chan-ai (Elysia)**. Almost everything you see here is their work. <:ElysiaHeart:1190332148868186253>
+                    description: `**${Constants.AppName}** is a fork of **DiscordBotClient**, created by **aiko-chan-ai (Elysia)**. Almost everything you see here is their work. <:ElysiaHeart:1190332148868186253>
 
 If you enjoy it, please star the [original project](https://github.com/aiko-chan-ai/DiscordBotClient) and consider [sponsoring its author](https://github.com/sponsors/aiko-chan-ai).
 
