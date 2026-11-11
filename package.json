@@ -60,7 +60,7 @@
   ],
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@fluentui/react-components": "^9.75.0",
+    "@fluentui/react-components": "^9.75.1",
     "@fluentui/react-icons": "^2.0.345",
     "@types/express": "^5.0.6",
     "@types/http-proxy": "^1.17.17",
@@ -87,7 +87,7 @@
     "globals": "^17.14.0",
     "js-beautify": "^2.0.3",
     "jsdom": "^31.0.0",
-    "pnpm": "^12.16.1",
+    "pnpm": "^12.18.0",
     "prettier": "^3.9.10",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
