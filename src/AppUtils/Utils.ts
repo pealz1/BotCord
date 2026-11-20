@@ -280,7 +280,7 @@ export default class Util {
     }
     static generateSelfSignedCertificate () {
         return selfsigned.generate([{ name: "commonName", value: "localhost" }], {
-            days: 3650,
+            notAfterDate: new Date(Date.now() + 3650 * 24 * 60 * 60 * 1000),
             keySize: 2048,
             algorithm: "sha256",
             extensions: [

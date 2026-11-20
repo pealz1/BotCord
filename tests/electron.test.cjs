@@ -26,7 +26,10 @@ for (const [name, file, profileKey, prefix, timeout] of fixtures) {
         let output = '';
         try {
             await new Promise((resolve, reject) => {
-                const child = spawn(electron, [path.join(__dirname, 'fixtures', file)], {
+                const args = [path.join(__dirname, 'fixtures', file)];
+                // Hidden test windows need a composited frame for capturePage on Windows.
+                if (process.platform === 'win32') args.unshift('--disable-gpu');
+                const child = spawn(electron, args, {
                     cwd: root, env, windowsHide: true, timeout,
                 });
                 for (const stream of [child.stdout, child.stderr]) {
