@@ -100,8 +100,8 @@
   "dependencies": {
     "@sapphire/snowflake": "^4.0.0",
     "dexie": "^4.4.7",
-    "discord-api-types": "^0.38.59",
-    "discord-protos": "^1.2.425",
+    "discord-api-types": "^0.38.60",
+    "discord-protos": "^1.2.427",
     "electron-context-menu": "^5.1.0",
     "electron-log": "^5.4.4",
     "electron-updater": "^6.8.11",
