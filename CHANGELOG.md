@@ -2,6 +2,12 @@
 
 All notable changes to BotCord (called BotDeck up to 1.0.0) are listed here. Versions follow [Semantic Versioning](https://semver.org).
 
+## [1.2.1](https://github.com/pealz1/BotCord/releases/tag/v1.2.1) - 2026-11-24
+
+- Fixed outdated Electron runtime (45.5.0).
+- Fixed outdated Discord protocol definitions.
+- Fixed vulnerable editor build dependencies.
+
 ## [1.2.0] - 2026-11-05
 
 A maintenance release: BotCord moves to Electron 45 and Express 5. Nothing changes in how you use it.
