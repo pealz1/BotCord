@@ -1,0 +1,121 @@
+diff --git a/app/i18n.ts b/app/i18n.ts
+index 6f8b9ba..2453ef9 100644
+--- a/app/i18n.ts
++++ b/app/i18n.ts
+@@ -1,19 +1,23 @@
+-import type { InterpolationOptions } from "i18next";
++import type { FormatterModule } from "i18next";
+ import moment from "moment";
+ 
+ export const supportedLanguages = ["en"] as const;
+ 
+ export type LocaleCode = (typeof supportedLanguages)[number];
+ 
++export const messageFormatter = {
++  type: "formatter",
++  format(value: unknown, pattern?: string) {
++    if (pattern === "lowercase" && typeof value === "string") return value.toLowerCase();
++    if (value instanceof Date) return moment(value).format(pattern);
++    return String(value);
++  },
++} satisfies Pick<FormatterModule, "type" | "format">;
++
+ export default {
+   supportedLngs: supportedLanguages,
+   fallbackLng: "en",
+   interpolation: {
+     escapeValue: false,
+-    format: (value, format) => {
+-      if (format === "lowercase") return value.toLowerCase();
+-      if (value instanceof Date) return moment(value).format(format);
+-      return value.toString();
+-    },
+-  } satisfies InterpolationOptions,
++  },
+ };
+diff --git a/app/main.tsx b/app/main.tsx
+index 0a8568a..3feb321 100644
+--- a/app/main.tsx
++++ b/app/main.tsx
+@@ -5,7 +5,7 @@ import { StrictMode } from "react";
+ import { createRoot } from "react-dom/client";
+ import { I18nextProvider, initReactI18next } from "react-i18next";
+ import { App } from "./App";
+-import i18nConfig from "./i18n";
++import i18nConfig, { messageFormatter } from "./i18n";
+ import english from "../public/i18n/en.json";
+ import "./styles/app.css";
+ 
+@@ -16,6 +16,7 @@ if (!("structuredClone" in globalThis)) {
+ 
+ async function init() {
+   await i18next
++    .use(messageFormatter)
+     .use(initReactI18next)
+     .use(LanguageDetector)
+     .init({
+diff --git a/package-lock.json b/package-lock.json
+index e0aef25..32db93e 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -20,7 +20,7 @@
+         "front-matter": "^4.0.2",
+         "he": "^1.2.0",
+         "highlight.js": "^11.9.0",
+-        "i18next": "^25.0.2",
++        "i18next": "^27.2.7",
+         "i18next-browser-languagedetector": "^8.0.5",
+         "insert-text-at-cursor": "^0.3.0",
+         "mime": "^4.0.6",
+@@ -2376,29 +2376,29 @@
+       }
+     },
+     "node_modules/i18next": {
+-      "version": "25.8.14",
+-      "resolved": "https://registry.npmjs.org/i18next/-/i18next-25.8.14.tgz",
+-      "integrity": "sha512-paMUYkfWJMsWPeE/Hejcw+XLhHrQPehem+4wMo+uELnvIwvCG019L9sAIljwjCmEMtFQQO3YeitJY8Kctei3iA==",
++      "version": "27.2.7",
++      "resolved": "https://registry.npmjs.org/i18next/-/i18next-27.2.7.tgz",
++      "integrity": "sha512-q3XlM8YSo6Nmomd+MQ4JPGJGvhgHwfCRXNeFrM8l0F4TuIuoJBqhCxQrdGDHNMjObRuw5O0ReuU968ZeMVlfnw==",
+       "funding": [
+         {
+           "type": "individual",
+-          "url": "https://locize.com"
++          "url": "https://www.locize.com/i18next"
+         },
+         {
+           "type": "individual",
+-          "url": "https://locize.com/i18next.html"
++          "url": "https://www.i18next.com/how-to/faq#i18next-is-awesome.-how-can-i-support-the-project"
+         },
+         {
+           "type": "individual",
+-          "url": "https://www.i18next.com/how-to/faq#i18next-is-awesome.-how-can-i-support-the-project"
++          "url": "https://www.locize.com"
+         }
+       ],
+       "license": "MIT",
+-      "dependencies": {
+-        "@babel/runtime": "^7.28.4"
++      "engines": {
++        "node": ">=22"
+       },
+       "peerDependencies": {
+-        "typescript": "^5"
++        "typescript": "^5 || ^6 || ^7"
+       },
+       "peerDependenciesMeta": {
+         "typescript": {
+diff --git a/package.json b/package.json
+index 5f220f0..8f79c1f 100644
+--- a/package.json
++++ b/package.json
+@@ -23,7 +23,7 @@
+     "front-matter": "^4.0.2",
+     "he": "^1.2.0",
+     "highlight.js": "^11.9.0",
+-    "i18next": "^25.0.2",
++    "i18next": "^27.2.7",
+     "i18next-browser-languagedetector": "^8.0.5",
+     "insert-text-at-cursor": "^0.3.0",
+     "mime": "^4.0.6",
